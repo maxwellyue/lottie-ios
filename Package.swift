@@ -3,27 +3,14 @@ import PackageDescription
 
 let package = Package(
   name: "Lottie",
-  #if os(macOS)
-  platforms: [.macOS(.v10_14)],
-  #elseif canImport(UIKit)
-  platforms: [.iOS(.v9)],
-  #endif
+  platforms: [.macOS(.v10_14), .iOS(.v9)],
   products: [
     .library(name: "Lottie", targets: ["Lottie"])
   ],
   targets: [
-    #if os(macOS)
     .target(
       name: "Lottie",
-      path: "lottie-swift/src",
-      exclude: ["Public/iOS"]
+      path: "lottie-swift/src"
     )
-    #elseif canImport(UIKit)
-    .target(
-      name: "Lottie",
-      path: "lottie-swift/src",
-      exclude: ["Public/MacOS"]
-    )
-    #endif
   ]
 )
