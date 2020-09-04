@@ -6,7 +6,7 @@
 //
 
 import Foundation
-#if os(OSX)
+#if os(macOS)
 import AppKit
 
 /// A view that can be added to a keypath of an AnimationView
