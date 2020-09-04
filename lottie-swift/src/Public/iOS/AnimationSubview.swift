@@ -6,15 +6,21 @@
 //
 
 import Foundation
-#if os(iOS) || os(tvOS) || os(watchOS)
-import UIKit
+#if canImport(UIKit)
+    import UIKit
+    public final class AnimationSubview: UIView {
+        var viewLayer: CALayer? {
+            return layer
+        }
+    }
+#endif
 
-/// A view that can be added to a keypath of an AnimationView
-public final class AnimationSubview: UIView {
-  
-  var viewLayer: CALayer? {
-    return layer
-  }
-  
-}
+#if os(macOS)
+    import AppKit
+    public final class AnimationSubview: NSView {
+        var viewLayer: CALayer? {
+            return layer
+        }
+    }
+
 #endif
